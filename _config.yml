@@ -39,9 +39,10 @@ paginate: 10
 paginate_path: "page/:num/"
 
 # Comment
-comment:
-    disqus: Kyle_Ng
-    # duoshuo:
+comments :
+  provider : duoshuo
+  duoshuo :
+    short_name : kyle
 # Social
 social:
     weibo: Kyle_Ng
