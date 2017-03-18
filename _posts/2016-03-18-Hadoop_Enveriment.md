@@ -56,6 +56,6 @@ hadoop安装和环境变量配置
 	28066 NodeManager
 	27803 ResourceManager
 	27512 DataNode
-http://192.168.1.101:50070 （HDFS管理界面）<br>
-http://192.168.1.101:8088 （MR管理界面）
+http://192.168.1.101:50070 (HDFS管理界面)<br>
+http://192.168.1.101:8088 (MR管理界面)
 
