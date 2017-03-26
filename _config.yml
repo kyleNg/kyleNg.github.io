@@ -25,7 +25,7 @@ blog_button:
 nav:
     - {title: 目录,        in_site: true,  description: 博客目录,       url: '/timeline'}
     - {title: 标签,        in_site: true,  description: 标签分类,       url: '/customview/CustomViewIndex'}
-    - {title: 关于,        in_site: true,  description: 关于作者,       url: '/info/about'}
+    - {title: 关于,        in_site: true,  description: 关于作者,       url: '/about'}
 
 
 
@@ -38,21 +38,9 @@ gems:
 paginate: 10
 paginate_path: "page/:num/"
 
-# Comment
-comments :
-  provider : duoshuo
-  duoshuo :
-    short_name : kyle
 # Social
 social:
     weibo: Kyle_Ng
     github: Kyle_Ng
     twitter: Kyle_Ng
-#    rss: /feed.xml
     mail: Kyle_Ng
- #   copyright: http://choosealicense.online
-
-# Google Analytics
-ga:
-#    id: UA-82493667-1
-#    host: www.gcssloop.com
