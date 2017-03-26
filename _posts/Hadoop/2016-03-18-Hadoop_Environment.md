@@ -44,17 +44,17 @@ hadoop安装和环境变量配置<br>
 ## Hadoop主要目录介绍
 1,hadoop主目录下<br>
 
-	bin  
+	bin
 	etc  --> hadoop的各种配置文件
-	include  
-	lib  
-	libexec  
-	LICENSE.txt  
-	logs  
-	NOTICE.txt  
-	README.txt  
+	include
+	lib
+	libexec
+	LICENSE.txt
+	logs
+	NOTICE.txt
+	README.txt
 	sbin  --> hadoop启动停止等运行脚本
-	share  
+	share
 	  --doc  -->hadoop的文档
 	  --hadoop -->jar包存放位置
 	      --common
@@ -77,7 +77,7 @@ hadoop安装和环境变量配置<br>
 ## Hadoop主要配置文件
 **1,hadoop-env.sh<br>**
 
-	#The java implementation to use.  
+	#The java implementation to use.
 	export JAVA_HOME=${JAVA_HOME}
 
 **2,core-site.xml<br>**

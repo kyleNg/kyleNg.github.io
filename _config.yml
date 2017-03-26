@@ -1,7 +1,7 @@
 # Basic
 title: Kyle_Ng
-subtitle: 
-welcome_message: welcome to my blog! 
+subtitle:
+welcome_message: welcome to my blog!
 description: prictice make perfect.
 creator: <a href="https://kyleng.github.io">@Kyle_Ng</a>
 
@@ -26,7 +26,7 @@ nav:
     - {title: 目录,        in_site: true,  description: 博客目录,       url: '/timeline'}
     - {title: 标签,        in_site: true,  description: 标签分类,       url: '/customview/CustomViewIndex'}
     - {title: 关于,        in_site: true,  description: 关于作者,       url: '/info/about'}
-    
+
 
 
 gems:
