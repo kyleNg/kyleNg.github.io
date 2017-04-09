@@ -28,17 +28,12 @@ tags: Hadoop
 
 ### 添加用户
 
-sudo用户添加<br>
-http://blog.csdn.net/scottxu_5g/article/details/11778257<br>
-vim复制一行操作<br>
-http://yyq123.blogspot.jp/2009/02/vim_25.html
-http://blog.csdn.net/xiongzhengxiang/article/details/7206691
+[参考另一篇博客](https://kyleng.github.io/linux/Linux_addUser_and_addSudo)
 
 ### 配置SSH免密码登陆
-http://blog.csdn.net/leexide/article/details/17252369<br>
-ssh-keygen -t rsa （四个回车）<br>
-touch authorized_keys<br>
-scp命令：http://www.cnblogs.com/peida/archive/2013/03/15/2960802.html<br>
+
+[参考另一篇博客](https://kyleng.github.io/linux/Linux_SSHLogin_NoPassword)
+
 
 ### 安装文件
 java安装，环境变量配置<br>
