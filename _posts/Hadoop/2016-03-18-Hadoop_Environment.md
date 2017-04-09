@@ -1,29 +1,32 @@
 ---
 layout: post
 category:  Hadoop
-title: Hadoop伪分布式环境搭建
+title: Hadoop学习(一)-伪分布式环境搭建
 tags: Hadoop
 ---
 
 本博客前期准备工作需要有一台Linux虚拟机，本文中以ubuntu为例。
 
-## 网络配置
+### 网络配置
 **1,主机名：**<br>
 
-	vim /etc/hostname<br>
+	vim /etc/hostname
+
 ![](http://img.blog.csdn.net/20170324220817007)
 
 **2,修改IP:**<br>
 
-	vim /etc/network/interfaces<br>
+	vim /etc/network/interfaces
+
 ![](http://img.blog.csdn.net/20170324221332450)
 
 **3,域名映射**<br>
 
 	vim /etc/hosts  集群中的主机域名映射表
+
 ![](http://img.blog.csdn.net/20170324214214279)
 
-## 添加用户
+### 添加用户
 
 sudo用户添加<br>
 http://blog.csdn.net/scottxu_5g/article/details/11778257<br>
@@ -31,17 +34,17 @@ vim复制一行操作<br>
 http://yyq123.blogspot.jp/2009/02/vim_25.html
 http://blog.csdn.net/xiongzhengxiang/article/details/7206691
 
-## 配置SSH免密码登陆
+### 配置SSH免密码登陆
 http://blog.csdn.net/leexide/article/details/17252369<br>
 ssh-keygen -t rsa （四个回车）<br>
 touch authorized_keys<br>
 scp命令：http://www.cnblogs.com/peida/archive/2013/03/15/2960802.html<br>
 
-## 安装文件
+### 安装文件
 java安装，环境变量配置<br>
 hadoop安装和环境变量配置<br>
 
-## Hadoop主要目录介绍
+### Hadoop主要目录介绍
 1,hadoop主目录下<br>
 
 	bin
@@ -65,7 +68,7 @@ hadoop安装和环境变量配置<br>
 	      --tools
 	      --yarn
 
-## 配置环境变量
+### 配置环境变量
 
 	export HADOOP_BASE_PATH=/opt
 	export JAVA_HOME=/usr/lib/jvm/java-8-oracle/
@@ -74,7 +77,7 @@ hadoop安装和环境变量配置<br>
 	export HADOOP_CONF_DIR=$HADOOP_BASE_PATH/hadoop-2.7.3/etc/hadoop
 	export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
-## Hadoop主要配置文件
+### Hadoop主要配置文件
 **1,hadoop-env.sh<br>**
 
 	#The java implementation to use.
@@ -199,7 +202,7 @@ hadoop安装和环境变量配置<br>
 	    </property>
 	</configuration>
 
-## 启动hdfs和yarn
+### 启动hdfs和yarn
 
 **1. 格式化hdfs<br>**
 
@@ -213,7 +216,7 @@ hadoop安装和环境变量配置<br>
 	start-dfs.sh
 ![](http://img.blog.csdn.net/20170324222752017)<br>
 
-**4. 启动hdfs<br>**
+**4. 启动yarn<br>**
 
 	start-yarn.sh
 ![](http://img.blog.csdn.net/20170324222817674)<br>
@@ -230,4 +233,4 @@ http://192.168.0.234:8088 (MR管理界面)<br>
 
 ![](http://img.blog.csdn.net/20170324223050302)<br>
 
-## 用hdfs和mapreduce运行word count例子
+### 用hdfs和mapreduce运行word count例子

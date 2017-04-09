@@ -18,9 +18,10 @@ tags: Linux
 	[root@Server ~]# ls -l .ssh  
 	-rw------- 1 root root 1679 Mar  4 18:28 id_rsa  
 	-rw-r--r-- 1 root root  393 Mar  4 18:28 id_rsa.pub  
+
 可以发现 ssh目录下的两枚钥匙
 
-## 3.将公钥复制到被管理机器下的任意目录下
+## 3.将公钥复制到被管理机器
 将公钥发给要面密码登陆的目标机
 
 	[root@Server .ssh]# scp id_rsa.pub root@Server_target:/root
