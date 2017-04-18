@@ -1,7 +1,7 @@
 ---
 layout: post
 category:  java 
-title: java集合
+title: Java集合
 tags: java,collection
 ---
 ## 前言
@@ -65,18 +65,23 @@ List的列表迭代器：<br>
 
 <br>
 **Interface ListIterator<E>**
-![](http://img.blog.csdn.net/20170416222800338?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY2hhbzQ2NjY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)<br><br>
-**List接口的子类**<br><br>
-**1.ArrayList**<br>
+
+![](http://img.blog.csdn.net/20170416222800338?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY2hhbzQ2NjY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+<br>
+**List接口的子类**
+
+**1.ArrayList**
+
 JavaAPI解释：<br>
-Resizable-array implementation of the List interface. Implements all optional list operations, and permits all elements, including null. In addition to implementing the List interface, this class provides methods to manipulate the size of the array that is used internally to store the list. (This class is roughly equivalent to Vector, except that it is unsynchronized.)<br><br>
+Resizable-array implementation of the List interface. Implements all optional list operations, and permits all elements, including null. In addition to implementing the List interface, this class provides methods to manipulate the size of the array that is used internally to store the list. (This class is roughly equivalent to Vector, except that it is unsynchronized.)<br>
+
 简单说ArrayList就是一个可变长的数组结构。<br>
 ArrayList实现了List接口的所有方法。（好像说了很多又好像是什么都没说）<br>
 ArrayList允许所有元素，包括null。ArrayList没有同步。<br>
 ArrayList是非同步的（unsynchronized）。
 
-**2.LinkedList**<br>
+**2.LinkedList**
 
-**3.Vector**<br>
+**3.Vector**
 Vector非常类似ArrayList，但是Vector是同步的。因为Vector是同步的，当一个Iterator被创建而且正在被使用，另一个线程改变了Vector的状态（例如，添加或删除了一些元素），这时调用Iterator的方法时将抛出ConcurrentModificationException，因此**必须**捕获该异常。
 
