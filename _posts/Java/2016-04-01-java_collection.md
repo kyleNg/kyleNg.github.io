@@ -1,6 +1,8 @@
 ---
 layout: post
-category: java , collection
+category: 
+- java
+- collection
 title: Java集合
 tags: java,collection
 ---
