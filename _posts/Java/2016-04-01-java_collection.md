@@ -65,7 +65,7 @@ List的列表迭代器：<br>
            Object object = it.next();
     }
 
-**Interface ListIterator/<E/>**
+**Interface ListIterator**
 
 ![](http://img.blog.csdn.net/20170416222800338?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY2hhbzQ2NjY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 <br>
@@ -84,6 +84,50 @@ ArrayList是非同步的（unsynchronized）。
 
 **2.LinkedList**
 
+LinkedList实现了List接口，允许null元素。此外LinkedList提供额外的get，remove，insert方法在 LinkedList的首部或尾部。这些操作使LinkedList可被用作堆栈（stack），队列（queue）或双向队列（deque）。<br>
+注意LinkedList没有同步方法。如果多个线程同时访问一个List，则必须自己实现访问同步。一种解决方法是在创建List时构造一个同步的List：
+
+	List list = Collections.synchronizedList(new LinkedList(...));
+
 **3.Vector**
+
 Vector非常类似ArrayList，但是Vector是同步的。因为Vector是同步的，当一个Iterator被创建而且正在被使用，另一个线程改变了Vector的状态（例如，添加或删除了一些元素），这时调用Iterator的方法时将抛出ConcurrentModificationException，因此**必须**捕获该异常。
 
+**4.Stack**
+
+Stack 类表示后进先出（LIFO）的对象堆栈。它通过五个操作对类 Vector 进行了扩展 ，允许将向量视为堆栈。它提供了通常的 push 和 pop 操作，以及取堆栈顶点的 peek 方法、测试堆栈是否为空的 empty 方法、在堆栈中查找项并确定到堆栈顶距离的 search 方法。
+
+### 三，Set接口
+
+**Set接口的子类**
+
+**1.HashSet类**
+
+**2.TreeSet类**
+
+### 四，Map接口
+
+**Hashtable类**
+
+**HashMap类**
+
+**WeakHashMap类**
+
+### 五，对集合操作的工具类
+
+总结
+如果涉及到堆栈，队列等操作，应该考虑用List，对于需要快速插入，删除元素，应该使用LinkedList，如果需要快速随机访问元素，应该使用ArrayList。
+如果程序在单线程环境中，或者访问仅仅在一个线程中进行，考虑非同步的类，其效率较高，如果多个线程可能同时操作一个类，应该使用同步的类。
+在除需要排序时使用TreeSet,TreeMap外,都应使用HashSet,HashMap,因为他们 的效率更高。
+要特别注意对哈希表的操作，作为key的对象要正确复写equals和hashCode方法。
+
+容器类仅能持有对象引用（指向对象的指针），而不是将对象信息copy一份至数列某位置。一旦将对象置入容器内，便损失了该对象的型别信息。
+尽量返回接口而非实际的类型，如返回List而非ArrayList，这样如果以后需要将ArrayList换成LinkedList时，客户端代码不用改变。这就是针对抽象编程。
+ 
+注意：
+1、Collection没有get()方法来取得某个元素。只能通过iterator()遍历元素。<br>
+2、Set和Collection拥有一模一样的接口。<br>
+3、List，可以通过get()方法来一次取出一个元素。使用数字来选择一堆对象中的一个，get(0)...(add/get)<br>
+4、一般使用ArrayList。用LinkedList构造堆栈stack、队列queue。<br>
+5、Map用 put(k,v) / get(k)，还可以使用containsKey() / containsValue()来检查其中是否含有某个key / value。
+HashMap会利用对象的hashCode来快速找到key。
