@@ -2,9 +2,8 @@
 layout: post
 category: 
 - java
-- collection
 title: Java集合
-tags: java,collection
+tags: java
 ---
 ## 前言
 Java集合是java提供的工具包，包含了常用的数据结构：集合、链表、队列、栈、数组、映射等。Java集合工具包位置是java.util.*<br>
@@ -50,7 +49,7 @@ Collection是一个接口，用以提供规范定义，不能被实例化使用�
 	}
 
 ### 二，List接口
-List继承自Collection接口。List是有序并且可以重复的Collection，使用此接口能够精确的控制每个元素插入的位置。用户能够使用索引（元素在List中的位置，类似于数组下标）来访问List中的元素。<br>
+List继承自Collection接口。List是**有序**并且**可以重复**的Collection，使用此接口能够精确的控制每个元素插入的位置。用户能够使用索引（元素在List中的位置，类似于数组下标）来访问List中的元素。<br>
 实现List接口的常用类有LinkedList，ArrayList，Vector和Stack。<br>
 List的列表迭代器：<br>
 
@@ -85,7 +84,7 @@ ArrayList是非同步的（unsynchronized）。
 **2.LinkedList**
 
 LinkedList实现了List接口，允许null元素。此外LinkedList提供额外的get，remove，insert方法在 LinkedList的首部或尾部。这些操作使LinkedList可被用作堆栈（stack），队列（queue）或双向队列（deque）。<br>
-注意LinkedList没有同步方法。如果多个线程同时访问一个List，则必须自己实现访问同步。一种解决方法是在创建List时构造一个同步的List：
+**注意**LinkedList没有同步方法。如果多个线程同时访问一个List，则必须自己实现访问同步。一种解决方法是在创建List时构造一个同步的List：
 
 	List list = Collections.synchronizedList(new LinkedList(...));
 
@@ -99,11 +98,28 @@ Stack 类表示后进先出（LIFO）的对象堆栈。它通过五个操作对�
 
 ### 三，Set接口
 
+一个不**包含重复元素**的 collection。更确切地讲，set 不包含满足 e1.equals(e2) 的元素对 e1 和 e2，并且最多包含一个 null 元素。正如其名称所暗示的，此接口模仿了数学上的 set 抽象。<br>
+因为Set的这个制约，在使用Set集合的时候，应该注意：  
+1，为Set集合里的元素的实现类实现一个有效的equals(Object)方法。  
+2，对Set的构造函数，传入的Collection参数不能包含重复的元素。
+
+
 **Set接口的子类**
 
 **1.HashSet类**
 
+此类实现 Set 接口，由哈希表（实际上是一个 HashMap 实例，也就是HashMap的key组成了HashSet）支持。它**不保证 set 的迭代顺序**（区别于List接口的子类）；特别是它不保证该顺序恒久不变。此类允许使用 null 元素。  
+**注意**，此实现不是同步的。若想构造一个同步的Hashset：  
+
+    Set s = Collections.synchronizedSet(new HashSet(...));
+
+
 **2.TreeSet类**
+
+基于 TreeMap 的 NavigableSet 实现。使用元素的自然顺序对元素进行排序，或者根据创建 set 时提供的 Comparator 进行排序，具体取决于使用的构造方法。  
+
+**注意**，如果要正确实现 Set 接口，则 set 维护的顺序（无论是否提供了显式比较器）必须与 equals 一致。（关于与 equals 一致 的精确定义，请参阅 Comparable 或 Comparator。）这是因为 Set 接口是按照 equals 操作定义的，但 TreeSet 实例使用它的 compareTo（或 compare）方法对所有元素进行比较，因此从 set 的观点来看，此方法认为相等的两个元素就是相等的。即使 set 的顺序与 equals 不一致，其行为也是 定义良好的；它只是违背了 Set 接口的常规协定。
+
 
 ### 四，Map接口
 

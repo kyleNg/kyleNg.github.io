@@ -26,7 +26,7 @@ tags: Hadoop
 
 ![](http://img.blog.csdn.net/20170324214214279)
 
-### 添加用户
+### 添加用户并赋予sudo权限
 
 [参考另一篇博客](https://kyleng.github.io/linux/Linux_addUser_and_addSudo)
 
@@ -72,16 +72,16 @@ hadoop安装和环境变量配置<br>
 	export HADOOP_CONF_DIR=$HADOOP_BASE_PATH/hadoop-2.7.3/etc/hadoop
 	export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
-### Hadoop主要配置文件
+### Hadoop主要配置文件（这里提供最低配置）
 **1,hadoop-env.sh<br>**
 
 	#The java implementation to use.
-	export JAVA_HOME=${JAVA_HOME}
+	export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+	这里修改/usr/lib/jvm/java-8-oracle/为自己本地JavaHome
 
 **2,core-site.xml<br>**
 
 	<configuration>
-
 		<!-- hadoop公共目录 -->
 		<property>
 		    <name>hadoop.tmp.dir</name>
@@ -94,24 +94,6 @@ hadoop安装和环境变量配置<br>
 		    <name>fs.defaultFS</name>
 		    <value>hdfs://Hadoop-Server:9000</value>
 		</property>
-
-		<!-- file system properties -->
-		<property>
-		    <name>fs.default.name</name>
-		    <value>hdfs://Hadoop-Server:9000</value>
-		</property>
-		<property>
-		    <name>io.file.buffer.size</name>
-		    <value>131072</value>
-		</property>
-		<property>
-		    <name>hadoop.proxyuser.hduser.hosts</name>
-		    <value>*</value>
-		</property>
-		<property>
-		    <name>hadoop.proxyuser.hduser.groups</name>
-		    <value>*</value>
-		</property>
 	</configuration>
 
 
@@ -122,10 +104,12 @@ hadoop安装和环境变量配置<br>
 	        <name>dfs.namenode.secondary.http-address</name>
 	        <value>Hadoop-Server:9001</value>
 	    </property>
+	    <!-- NameNode元数据存放目录，可以配置多个以便HA(高可用) -->
 	    <property>
 	        <name>dfs.namenode.name.dir</name>
 	        <value>file:/hadoop/name</value>
 	    </property>
+	    <!-- DataNode存放数据信息的目录 -->
 	    <property>
 	        <name>dfs.namenode.data.dir</name>
 	        <value>file:/hadoop/data</value>
@@ -135,14 +119,6 @@ hadoop安装和环境变量配置<br>
 	    <property>
 	        <name>dfs.replication</name>
 	        <value>1</value>
-	    </property>
-	    <property>
-	        <name>dfs.webhdfs.enabled</name>
-	        <value>true</value>
-	    </property>
-	    <property>
-	        <name>dfs.permissions.enabled</name>
-	        <value>false</value>
 	    </property>
 	</configuration>
 
@@ -200,8 +176,10 @@ hadoop安装和环境变量配置<br>
 ### 启动hdfs和yarn
 
 **1. 格式化hdfs<br>**
+主要对HDSFS系统的初始化
 
 	hdfs namenode -format
+
 **2. hadoop执行脚本一览**
 
 ![](http://img.blog.csdn.net/20170324222008016)<br>
@@ -209,11 +187,13 @@ hadoop安装和环境变量配置<br>
 **3. 启动hdfs<br>**
 
 	start-dfs.sh
+
 ![](http://img.blog.csdn.net/20170324222752017)<br>
 
 **4. 启动yarn<br>**
 
 	start-yarn.sh
+
 ![](http://img.blog.csdn.net/20170324222817674)<br>
 
 **5. 使用jps命令验证<br>**
@@ -228,4 +208,4 @@ http://192.168.0.234:8088 (MR管理界面)<br>
 
 ![](http://img.blog.csdn.net/20170324223050302)<br>
 
-### 用hdfs和mapreduce运行word count例子
+如果成功看见以上两个页面那么一个伪分布式的Hadoop系统就已经安装成功了。

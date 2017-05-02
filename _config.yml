@@ -41,6 +41,6 @@ paginate_path: "page/:num/"
 # Social
 social:
     weibo: Kyle_Ng
-    github: Kyle_Ng
+    github: kyleNg
     twitter: Kyle_Ng
     mail: Kyle_Ng
