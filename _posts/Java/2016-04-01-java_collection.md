@@ -18,16 +18,16 @@ Java集合框架的基本接口/类层次结构:<br>
 	      +--java.util.Stack [C]
 	+--java.util.Set [I]
 	   +--java.util.HashSet [C]
+	      +--java.util.LinkedHashSet[C]
 	   +--java.util.SortedSet [I]
-	   +--java.util.TreeSet [C]
+	      +--java.util.TreeSet [C]
 
 	java.util.Map [I]
 	+--java.util.SortedMap [I]
 	   +--java.util.TreeMap [C]
 	+--java.util.Hashtable [C]
 	+--java.util.HashMap [C]
-	+--java.util.LinkedHashMap [C]
-	+--java.util.WeakHashMap [C]
+	   +--java.util.LinkedHashMap [C]
 
 	[I]：接口	[C]：类
 
@@ -61,8 +61,8 @@ List的列表迭代器：<br>
 	//列表迭代器也是Interator的一个实现，这个实现支持在迭代的时候对列表进行操作
 	//具体方法实现参照下图javaAPI
 	for (ListIterator it = list.listIterator();it.hasNext();) {
-           Object object = it.next();
-    }
+	       Object object = it.next();
+	}
 
 **Interface ListIterator**
 
@@ -78,7 +78,7 @@ Resizable-array implementation of the List interface. Implements all optional li
 
 简单说ArrayList就是一个可变长的数组结构。<br>
 ArrayList实现了List接口的所有方法。（好像说了很多又好像是什么都没说）<br>
-ArrayList允许所有元素，包括null。ArrayList没有同步。<br>
+ArrayList允许所有元素，包括null。<br>
 ArrayList是非同步的（unsynchronized）。
 
 **2.LinkedList**
@@ -116,18 +116,21 @@ Stack 类表示后进先出（LIFO）的对象堆栈。它通过五个操作对�
 
 **2.TreeSet类**
 
-基于 TreeMap 的 NavigableSet 实现。使用元素的自然顺序对元素进行排序，或者根据创建 set 时提供的 Comparator 进行排序，具体取决于使用的构造方法。  
+TreeSet是SortedSet接口的实现类，TreeSet可以确保集合元素处于排序状态。使用元素的自然顺序对元素进行排序，或者根据创建 set 时提供的 Comparator 进行排序，具体取决于使用的构造方法。 
 
 **注意**，如果要正确实现 Set 接口，则 set 维护的顺序（无论是否提供了显式比较器）必须与 equals 一致。（关于与 equals 一致 的精确定义，请参阅 Comparable 或 Comparator。）这是因为 Set 接口是按照 equals 操作定义的，但 TreeSet 实例使用它的 compareTo（或 compare）方法对所有元素进行比较，因此从 set 的观点来看，此方法认为相等的两个元素就是相等的。即使 set 的顺序与 equals 不一致，其行为也是 定义良好的；它只是违背了 Set 接口的常规协定。
 
+**2.LinkedHashSet类**
 
 ### 四，Map接口
 
-**Hashtable类**
+**1.Hashtable类**
 
-**HashMap类**
+**2.HashMap类**
 
-**WeakHashMap类**
+**3.TreeMap类**
+TreeMap就是一个红黑树数据结构，每个key-value对即作为红黑树的一个节点。TreeMap存储key-value对(节点)时，需要根据key对节点进行排序。TreeMap可以保证所有的
+key-value对处于有序状态。同样，TreeMap也有两种排序方式: 自然排序、定制排序
 
 ### 五，对集合操作的工具类
 
