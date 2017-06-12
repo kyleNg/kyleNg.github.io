@@ -29,17 +29,22 @@ zookeeper适合装在奇数台机器上！！！
 
 ### 2，修改环境变量 ###
 	sudo vim /etc/profile
+
 在文件结尾加上下面两句环境变量配置<br>
 
 	export ZOOKEEPER_HOME=/opt/zookeeper-3.4.9
 	export PATH=$PATH:\$ZOOKEEPER_HOME/bin
+
 ![](http://img.blog.csdn.net/20170611230526583)<br>
 重新加载profile文件<br>
 
 	source /etc/profile
+
 ### 3，修改配置文件 ###
+
 	cp /opt/zookeeper-3.4.9/conf/zoo_sample.cfg /opt/zookeeper-3.4.9/conf/zoo.cfg
 	vim /opt/zookeeper-3.4.9/conf/zoo.cfg
+
 ![](http://img.blog.csdn.net/20170611230548240)
 配置文件修改如下<br>
 
