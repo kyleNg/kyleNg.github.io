@@ -1,7 +1,7 @@
 ---
 layout: post
 category:  Hadoop
-title: Hadoop学习(二)-Hdfs架构
+title: Hadoop学习(二)-Hdfs
 tags: Hadoop，hdfs
 ---
 
