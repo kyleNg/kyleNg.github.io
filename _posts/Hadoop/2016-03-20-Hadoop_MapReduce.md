@@ -33,6 +33,7 @@ Reducetask进程启动之后，根据MRAppMaster告知的待处理数据所在�
 	a)简单地按照文件的内容长度进行切片
 	b)切片大小，默认等于block大小
 	c)切片时不考虑数据集整体，而是逐个针对每一个文件单独切片
+
 **2.3 FileInputFormat中切片的大小的参数配置**<br>
 minsize：默认值：1<br>
 
@@ -146,7 +147,7 @@ reducetask的并行度同样影响整个job的执行并发度和执行效率，�
 **2.1 本地运行模式**
 
 （1）mapreduce程序是被提交给LocalJobRunner在本地以单进程的形式运行<br>
-（2）而处理的数据及输出结果可以在本地文件系统，也可以在hdfs上<br>
+（2）处理的数据及输出结果可以在本地文件系统，也可以在hdfs上<br>
 （3）怎样实现本地运行？写一个程序，不要带集群的配置文件（本质是你的mr程序的conf中是否有mapreduce.framework.name=local以及yarn.resourcemanager.hostname参数）<br>
 （4）本地模式非常便于进行业务逻辑的debug，只要在eclipse中打断点即可<br>
 
@@ -158,5 +159,6 @@ reducetask的并行度同样影响整个job的执行并发度和执行效率，�
 ————A、将程序打成JAR包，然后在集群的任意一个节点上用hadoop命令启动<br>
 
 	$ hadoop jar wordcount.jar cn.itcast.bigdata.mrsimple.WordCountDriver inputpath outputpath
+
 ————B、直接在linux的eclipse中运行main方法
 （项目中要带参数：mapreduce.framework.name=yarn以及yarn的两个基本配置,可在配置文件中直接配置或者在设置job时候配置）
