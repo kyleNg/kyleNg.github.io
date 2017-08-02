@@ -1,7 +1,7 @@
 ---
 layout: post
 category:  Hadoop
-title: Hadoop学习(三)-MapReduce
+title: Hadoop-MapReduce
 tags: Hadoop，MapReduce
 ---
 

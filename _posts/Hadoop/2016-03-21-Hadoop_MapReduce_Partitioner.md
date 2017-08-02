@@ -1,7 +1,7 @@
 ---
 layout: post
 category:  Hadoop
-title: Hadoop学习(五)-MapReduce的Partitioner
+title: Hadoop-MapReduce的Partitioner
 tags: Hadoop，MapReduce，Partitioner
 ---
 

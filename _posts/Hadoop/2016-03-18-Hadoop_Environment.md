@@ -1,7 +1,7 @@
 ---
 layout: post
 category:  Hadoop
-title: Hadoop学习(一)-伪分布式环境搭建
+title: Hadoop-伪分布式环境搭建
 tags: Hadoop
 ---
 
@@ -12,7 +12,7 @@ tags: Hadoop
 
 	vim /etc/hostname
 
-![](http://img.blog.csdn.net/20170324220817007)
+	Hadoop Server
 
 **2,修改IP:**<br>
 
