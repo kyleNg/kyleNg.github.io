@@ -147,7 +147,7 @@ ticket = 1<br>
 	        new Thread(my).start();  
 	        new Thread(my).start();  
 	    }  
-	} 
+	}
 
 **运行结果：**<br>
 ticket = 5<br>
@@ -268,7 +268,6 @@ synchronized关键字，可以修饰一个方法或者一个代码块。synchron
 		    }  
 		} 
 
-
 **说明：**<br>
 
 1. 如果同一个方法内同时有两个或更多线程，则每个线程有自己的局部变量拷贝
@@ -334,35 +333,35 @@ tag a, num = 100<br>
 案例：多线程访问单例模式<br>
 单例模式一般分为两种饿汉模式和懒汉模式，这里只对懒汉模式（延迟加载）做讨论
 
-		class Single{
-			private static Single s = null;
-			private Single(){}
-			public static Single getInstance(){
-				if(s == null)
-					s = new Single();
-				return s;
-			}
+	class Single{
+		private static Single s = null;
+		private Single(){}
+		public static Single getInstance(){
+			if(s == null)
+				s = new Single();
+			return s;
 		}
+	}
 
 这是普通的延迟加载单例模式，当有多线程访问的时候因为对`s = new Single();`共性数据进行多条语句的操作，所以容易出现线程安全问题。也就是说在一个线程判断s为null之后还没开始new之前可能会有另一个进程也判断s为null进如条件，这样就会产生两个对象，导致程序不是单例的。<br>
 解决办法：在new对象时候实现同步
 
-		class Single{
-			private static Single s = null;
-			private Single(){}
-			public static Single getInstance(){
-				// 为了效率问题不需要每次进入方法都走同步方法，
-				// 同步方法虽然能实现线程安全，但是带来的相对降低性能，因为判断锁需要消耗资源
-				if(s == null){
-					// 因为是static修饰所以锁应该用该对象的类
-					synchronized(Single.class){
-						if(s == null)
-							s = new Single();
-					}
+	class Single{
+		private static Single s = null;
+		private Single(){}
+		public static Single getInstance(){
+			// 为了效率问题不需要每次进入方法都走同步方法，
+			// 同步方法虽然能实现线程安全，但是带来的相对降低性能，因为判断锁需要消耗资源
+			if(s == null){
+				// 因为是static修饰所以锁应该用该对象的类
+				synchronized(Single.class){
+					if(s == null)
+						s = new Single();
 				}
-				return s;
 			}
+			return s;
 		}
+	}
 
 ### 2,死锁
 
@@ -371,53 +370,53 @@ tag a, num = 100<br>
 
 案例：同步的嵌套死锁
 
-		class Test implements Runnable{
-			private boolean flag;
-			Test(boolean flag){
-				this.flag = flag;
-			}
-			public void run(){
-				if(flag){
-					while(true)
-						// 先获取locka锁
-						synchronized(MyLock.locka)
-						{
-							System.out.println(Thread.currentThread().getName()+"..if   locka....");
-							// 再获取lockb锁
-							synchronized(MyLock.lockb){
-								System.out.println(Thread.currentThread().getName()+"..if   lockb....");
-							}
-						}
-				}
-				else{
-					while(true)
-						// 先获取lockb锁
+	class Test implements Runnable{
+		private boolean flag;
+		Test(boolean flag){
+			this.flag = flag;
+		}
+		public void run(){
+			if(flag){
+				while(true)
+					// 先获取locka锁
+					synchronized(MyLock.locka)
+					{
+						System.out.println(Thread.currentThread().getName()+"..if   locka....");
+						// 再获取lockb锁
 						synchronized(MyLock.lockb){
-							System.out.println(Thread.currentThread().getName()+"..else  lockb....");
-							// 再获取locka锁
-							synchronized(MyLock.locka){
-								System.out.println(Thread.currentThread().getName()+"..else   locka....");
-							}
+							System.out.println(Thread.currentThread().getName()+"..if   lockb....");
 						}
-				}
+					}
+			}
+			else{
+				while(true)
+					// 先获取lockb锁
+					synchronized(MyLock.lockb){
+						System.out.println(Thread.currentThread().getName()+"..else  lockb....");
+						// 再获取locka锁
+						synchronized(MyLock.locka){
+							System.out.println(Thread.currentThread().getName()+"..else   locka....");
+						}
+					}
 			}
 		}
-		
-		class MyLock{
-			// 为了创建两个锁
-			public static final Object locka = new Object();
-			public static final Object lockb = new Object();
+	}
+	
+	class MyLock{
+		// 为了创建两个锁
+		public static final Object locka = new Object();
+		public static final Object lockb = new Object();
+	}
+	class DeadLockTest{
+		public static void main(String[] args){
+			Test a = new Test(true);
+			Test b = new Test(false);
+			Thread t1 = new Thread(a);
+			Thread t2 = new Thread(b);
+			t1.start();
+			t2.start();
 		}
-		class DeadLockTest{
-			public static void main(String[] args){
-				Test a = new Test(true);
-				Test b = new Test(false);
-				Thread t1 = new Thread(a);
-				Thread t2 = new Thread(b);
-				t1.start();
-				t2.start();
-			}
-		}
+	}
 
 **运行结果：**<br>
 Thread-0..if   locka....<br>
@@ -552,6 +551,7 @@ notifyAll使所有原来在该对象上wait的线程统统退出wait的状态（
 		private String name;
 		private int count = 1;
 		private boolean flag = false;
+		// 修饰方法时候锁为this，所使用同一个Resource对象实现的方法会实现同步
 		public synchronized void set(String name){
 			while(flag)
 				try{this.wait();}catch(InterruptedException e){}
