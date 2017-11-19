@@ -1,8 +1,7 @@
 ---
 layout: post
-category: 
-- java
-title: Java多线程&并发
+category:  java
+title: Java多线程&并发-基础
 tags: java，Thread
 ---
 ## Java实现多线程概述
@@ -280,7 +279,7 @@ synchronized关键字，可以修饰一个方法或者一个代码块。synchron
 
 5. 使用synchronized（obj）同步语句块，可以获取指定对象上的对象级别锁。obj为对象的引用，如果获取了obj对象上的对象级别锁，在并发访问obj对象时时，便会在其synchronized代码处阻塞等待，直到获取到该obj对象的对象级别锁。当obj为this时，便是获取当前对象的对象级别锁
 
-案例：此案例对第三点和第四点做一个示例说明<br>
+案例：此案例对第四点和第五点做一个示例说明<br>
 
 	public class MultiThread {
 		private int num = 0;
@@ -544,6 +543,12 @@ notifyAll使所有原来在该对象上wait的线程统统退出wait的状态（
 			t2.start();
 		}
 	}
+
+**注意：**<br>
+
+1. wait和notify必须配合synchronized一起使用
+2. wait方法是释放锁的，而notify方法是不释放锁的
+
 
 案例：多生产者，多消费者问题
 
