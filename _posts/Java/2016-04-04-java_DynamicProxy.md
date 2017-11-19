@@ -8,7 +8,7 @@ tags: java，动态代理
 
 动态代理是指在运行时动态生成代理类。不需要像静态代理那个去手动写一个个的代理类。生成动态代理类有很多方式：Java动态代理，CGLIB，Javassist，ASM库等。这里主要说一下Java动态代理和CGLIB的实现。
 
-### 1,Java动态代理
+### 一 JDK动态代理----通过接口
 
 在java的动态代理机制中，有两个重要的类或接口，一个是 InvocationHandler(Interface)、另一个则是 Proxy(Class)，这一个类和接口是实现动态代理所必须用到的。
 
@@ -237,3 +237,16 @@ tags: java，动态代理
 		
 			}
 		}
+
+控制台的输出：<br>
+
+	开始获取代理对象
+	开始调用实际方法
+	Real object is created...
+	query is running...
+	查询方法结果： Something from DB.
+	update is running...
+	更新结果： 1
+
+### 二 CGLIB动态代理----通过类继承
+未完待续。。。
