@@ -41,7 +41,7 @@ tags: java，动态代理
 
 **一个例子：**
 
-1. 定义了一个Subject类型的接口:
+1. 定义一个Subject类型的接口:
 
 		package com.kyle.DynamicProxy;
 		
@@ -97,7 +97,7 @@ tags: java，动态代理
 			}
 		}
 
-4. 最后，来看看Client类：
+4. 最后，定义Client类：
 
 		import java.lang.reflect.InvocationHandler;
 		import java.lang.reflect.Proxy;
@@ -140,33 +140,100 @@ tags: java，动态代理
 
 **注：**通过 Proxy.newProxyInstance 创建的代理对象是在jvm运行时动态生成的一个对象，它并不是我们的InvocationHandler类型，也不是我们定义的那组接口的类型，而是在运行是动态生成的一个对象，并且命名方式都是这样的形式，以$开头，proxy为中，最后一个数字表示对象的标号。
 
+**对于JDK动态代理的疑问**
+为什么java动态代理为什么一定要代理接口而不能代理类？
+在动态代理经过编译之后的实现类似于以下结构：
+
+	public class $Proxy1 extends Proxy implements 传入的接口{
+	    
+	}
+
+到这里应该很容易理解为什么这里需要代理接口而不是一个类，因为这个动态代理已经继承了Proxy这个类.
 
 **延迟加载代理举例：**
 
 * 接口类：
-* 
-		public interface ILoadFile{
-			String load();
+
+		package com.kyle.LazyLoad;
+		
+		public interface IDBExcute {
+			
+			String query();
+		
+			int update();
 		}
 
 * 实现类：
 
-		public class LoadFile implements ILoadFile{
-			String fileContent = "";
-		    
-		    public LoadFile(){
-		    	try{
-		        	//这里模拟加载一个大文件，需要时间很长
-		        	Thread.sleep(10000);
-		            //加载完之后
-		            fileContent = "file contents...";
-		        }catch(Exception e){
-		        
-		        }
-		    }
-		    
-		    public String load(){
-		    	return fileContent;
-		    }
-		    
+		package com.kyle.LazyLoad;
+		
+		public class DBExcute implements IDBExcute {
+		
+			String queryContent = "Something from DB.";
+		
+			@Override
+			public String query() {
+				System.out.println("query is running...");
+				// 模拟查询操作的返回结果
+				return queryContent;
+			}
+		
+			public DBExcute() {
+				// 真实对象被创建时候打印信息
+				System.out.println("Real object is created...");
+			}
+		
+			@Override
+			public int update() {
+				System.out.println("update is running...");
+				// 模拟更新操作影响的件数
+				return 1;
+			}
+		}
+
+* 代理类：
+
+		package com.kyle.LazyLoad;
+		
+		import java.lang.reflect.InvocationHandler;
+		import java.lang.reflect.Method;
+		
+		public class DBExcuteHandler implements InvocationHandler {
+		
+			// 定义主题接口
+			IDBExcute dbQuery = null;
+		
+			@Override
+			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+				// 如果第一次调用，生成真实主题,创建真正要代理的类
+				if (dbQuery == null) {
+					dbQuery = new DBExcute();
+				}
+		
+				// 返回真实主题完成实际的操作
+				return method.invoke(dbQuery, args);
+			}
+		}
+
+* 测试类：
+
+		package com.kyle.LazyLoad;
+		
+		import java.lang.reflect.Proxy;
+		
+		public class Main {
+		
+			public static void main(String[] args) {
+				System.out.println("开始获取代理对象");
+				// 获取代理对象的时候真正的对象并没有被创建
+				IDBExcute excute = (IDBExcute) Proxy.newProxyInstance(ClassLoader.getSystemClassLoader(),
+						new Class[] { IDBExcute.class }, new DBExcuteHandler());
+				System.out.println("开始调用实际方法");
+				// 当第一次调用实际对象方法的时候真正的对象才被创建
+				String result = excute.query();
+				System.out.println("查询方法结果： " + result);
+				int count = excute.update();
+				System.out.println("更新结果： " + count);
+		
+			}
 		}
