@@ -33,12 +33,13 @@ Java集合框架的基本接口/类层次结构:<br>
 
 接下来逐一学习上面的集合类
 
-### 一，Collection接口
+### 一、Collection接口
 Collection是最基本的集合接口，一个Collection代表一组Object的集合，这些Object被称作Collection的元素。<br>
 Collection是一个接口，用以提供规范定义，不能被实例化使用。但是接口里面有几个类是所有实现它的集合都有的方法。<br>
 
 ![](http://img.blog.csdn.net/20170416210825924?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY2hhbzQ2NjY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
+**迭代器**(interator)<br>
 不论Collection的实际类型如何，它都支持一个iterator()的方法，该方法返回一个迭代对象，使用该迭代对象即可逐一访问Collection中每一个元素。典型的用法如下：
 
 	Iterator it = collection.iterator(); // 获得一个迭代子 
@@ -48,14 +49,14 @@ Collection是一个接口，用以提供规范定义，不能被实例化使用�
 	　　Object obj = it.next(); // 得到下一个元素 
 	}
 
-### 二，List接口
+### 二、List接口
 List继承自Collection接口。List是**有序**并且**可以重复**的Collection，使用此接口能够精确的控制每个元素插入的位置。用户能够使用索引（元素在List中的位置，类似于数组下标）来访问List中的元素。<br>
 实现List接口的常用类有LinkedList，ArrayList，Vector和Stack。<br>
 List的列表迭代器：<br>
 
 	//Returns a list iterator over the elements in this list (in proper sequence).
 	ListIterator<E>	listIterator()
-	//Returns a list iterator over the elements in this list (in proper sequence), starting at the specified position in the list
+	starting at the specified position in the list
 	ListIterator<E>	listIterator(int index)
 	
 	//列表迭代器也是Interator的一个实现，这个实现支持在迭代的时候对列表进行操作
@@ -73,17 +74,14 @@ List的列表迭代器：<br>
 
 **1.ArrayList**
 
-JavaAPI解释：<br>
-Resizable-array implementation of the List interface. Implements all optional list operations, and permits all elements, including null. In addition to implementing the List interface, this class provides methods to manipulate the size of the array that is used internally to store the list. (This class is roughly equivalent to Vector, except that it is unsynchronized.)<br>
-
-简单说ArrayList就是一个可变长的数组结构。<br>
+ArrayList就是一个可变长的数组结构。初始化数组长度为10<br>
 ArrayList实现了List接口的所有方法。（好像说了很多又好像是什么都没说）<br>
 ArrayList允许所有元素，包括null。<br>
 ArrayList是非同步的（unsynchronized）。
 
 **2.LinkedList**
 
-LinkedList实现了List接口，允许null元素。此外LinkedList提供额外的get，remove，insert方法在 LinkedList的首部或尾部。这些操作使LinkedList可被用作堆栈（stack），队列（queue）或双向队列（deque）。<br>
+LinkedList实现了List接口，是一个双向链表，允许null元素。此外LinkedList提供额外的get，remove，insert方法在 LinkedList的首部或尾部。这些操作使LinkedList可被用作堆栈（stack），队列（queue）或双向队列（deque）。<br>
 **注意**LinkedList没有同步方法。如果多个线程同时访问一个List，则必须自己实现访问同步。一种解决方法是在创建List时构造一个同步的List：
 
 	List list = Collections.synchronizedList(new LinkedList(...));
@@ -96,7 +94,7 @@ Vector非常类似ArrayList，但是Vector是同步的。因为Vector是同步�
 
 Stack 类表示后进先出（LIFO）的对象堆栈。它通过五个操作对类 Vector 进行了扩展 ，允许将向量视为堆栈。它提供了通常的 push 和 pop 操作，以及取堆栈顶点的 peek 方法、测试堆栈是否为空的 empty 方法、在堆栈中查找项并确定到堆栈顶距离的 search 方法。
 
-### 三，Set接口
+### 三、Set接口
 
 一个不**包含重复元素**的 collection。更确切地讲，set 不包含满足 e1.equals(e2) 的元素对 e1 和 e2，并且最多包含一个 null 元素。正如其名称所暗示的，此接口模仿了数学上的 set 抽象。<br>
 因为Set的这个制约，在使用Set集合的时候，应该注意：  
@@ -120,9 +118,15 @@ TreeSet是SortedSet接口的实现类，TreeSet可以确保集合元素处于排
 
 **注意**，如果要正确实现 Set 接口，则 set 维护的顺序（无论是否提供了显式比较器）必须与 equals 一致。（关于与 equals 一致 的精确定义，请参阅 Comparable 或 Comparator。）这是因为 Set 接口是按照 equals 操作定义的，但 TreeSet 实例使用它的 compareTo（或 compare）方法对所有元素进行比较，因此从 set 的观点来看，此方法认为相等的两个元素就是相等的。即使 set 的顺序与 equals 不一致，其行为也是 定义良好的；它只是违背了 Set 接口的常规协定。
 
+**3.EnumSet类**
+
+是枚举的专用Set。所有的元素都是枚举类型。
+
 **2.LinkedHashSet类**
 
-### 四，Map接口
+### 四、Map接口
+
+Map与List、Set接口不同，它是由一系列键值对组成的集合，提供了key到Value的映射。同时它也没有继承Collection。在Map中它保证了key与value之间的一一对应关系。也就是说一个key对应一个value，所以它不能存在相同的key值，当然value值可以相同。实现map的有：HashMap、TreeMap、HashTable、Properties、EnumMap。
 
 **1.Hashtable类**
 
@@ -132,7 +136,11 @@ TreeSet是SortedSet接口的实现类，TreeSet可以确保集合元素处于排
 TreeMap就是一个红黑树数据结构，每个key-value对即作为红黑树的一个节点。TreeMap存储key-value对(节点)时，需要根据key对节点进行排序。TreeMap可以保证所有的
 key-value对处于有序状态。同样，TreeMap也有两种排序方式: 自然排序、定制排序
 
-### 五，对集合操作的工具类
+### 五、Queue
+
+队列，它主要分为两大类，一类是阻塞式队列，队列满了以后再插入元素则会抛出异常，主要包括ArrayBlockQueue、PriorityBlockingQueue、LinkedBlockingQueue。另一种队列则是双端队列，支持在头、尾两端插入和移除元素，主要包括：ArrayDeque、LinkedBlockingDeque、LinkedList。
+
+### 六、对集合操作的工具类
 
 总结
 如果涉及到堆栈，队列等操作，应该考虑用List，对于需要快速插入，删除元素，应该使用LinkedList，如果需要快速随机访问元素，应该使用ArrayList。

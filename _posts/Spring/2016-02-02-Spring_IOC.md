@@ -1,24 +1,9 @@
 ---
 layout: post
 category: Spring
-title: Spring学习-Basic
+title: Spring学习-IOC&DI
 tags: Spring
 ---
-
-## Spring概述
-
-Spring 是一个开源框架.<br>
-主要特点：<br>
-- 轻量级：Spring 是非侵入性的基于 Spring 开发的应用中的对象可以不依赖于 Spring 的 API<br>
-- 依赖注入(DI --- dependency injection、IOC)<br>
-- 面向切面编程(AOP --- aspect oriented programming)<br>
-- 容器: Spring 是一个容器, 因为它包含并且管理应用对象的生命周期<br>
-- 框架: Spring 实现了使用简单的组件配置组合成一个复杂的应用. 在 Spring 中可以使用 XML 和 Java 注解组合这些对象<br>
-- 一站式：在 IOC 和 AOP 的基础上可以整合各种企业应用的开源框架和优秀的第三方类库 （实际上 Spring 自身也提供了展现层的 SpringMVC 和 持久层的 Spring JDBC）<br>
-<br>
-各个模块组成如下图：·<br>
-<br>
-![](http://www.zhanbus.com/uploads/allimg/141214/1-14121403253I23.png "图片来自网络")
 
 ## Spring中的IOC&DI
 
@@ -32,9 +17,14 @@ Spring 是一个开源框架.<br>
 			<property name="name" value="Spring"></property>
 		</bean>
 
-	在 IOC 容器中必须是唯一的
+	id ： 在 IOC 容器中必须是唯一的<br>
+	class ： Bean的全类名，通过反射的方式创建Bean，要求Bean中必须有一个无参构造器<br>
 
 * **基于注解的方式**
+
+	@Component是Spring容器中的基本注解，表示容器中的一个组件（bean），可以作用在任何层次，下面的示例介绍该注解的使用方法。
+
+* **基于Java类的方式**
 
 #### 2.Bean 的配置方式
 1. 通过全类名（反射）
@@ -43,29 +33,28 @@ Spring 是一个开源框架.<br>
 
 #### 3.IOC 容器 
 
-在 **Spring IOC 容器**读取 Bean 配置创建 Bean 实例之前, 必须对它进行实例化. 只有在容器实例化后, 才可以从 IOC 容器里获取 Bean 实例并使用
+在 **Spring IOC 容器**读取 Bean 配置创建 Bean 实例之前, 必须对它进行实例化. 只有在容器实例化后, 才可以从 IOC 容器里获取 Bean 实例并使用,
 
 1. **BeanFactory** : IOC 容器的基本实现
 
-	
-
-
 2. **ApplicationContext** : 提供了更多的高级特性. 是 BeanFactory 的子接口
 	
-	**重要接口**：<br>
-	-- ConfigurableApplicationContext : 扩展于 ApplicationContext，新增加两个主要方法：refresh() 和 close()， 让 ApplicationContext 具有启动、刷新和关闭上下文的能力
-
+	**重要子接口**：<br>
+	-- ConfigurableApplicationContext : 扩展于 ApplicationContext，新增加两个主要方法：refresh() 和 close()， 让 ApplicationContext 具有启动、刷新和关闭上下文的能力。
 
 	**主要实现类**：<br>
 	-- ClassPathXmlApplicationContext：从 类路径下加载配置文件<br>
 	-- FileSystemXmlApplicationContext: 从文件系统中加载配置文件
 
-	在初始化上下文时就实例化所有单例的 Bean
+	在初始化上下文时就实例化所有**单例**(非单例的采用延迟加载方式)的 Bean
 
-	WebApplicationContext 是专门为 WEB 应用而准备的，它允许从相对于 WEB 根目录的路径中完成初始化工作
+3. WebApplicationContext 是专门为 WEB 应用而准备的，它允许从相对于 WEB 根目录的路径中完成初始化工作
+4. IOC 容器中 获取 Bean 的方式
+获取Bean的方式都从BeanFactory中继承而来
 
-3. IOC 容器中 Bean 的生命周期
-4. 从 IOC 容器中获取 Bean
+
+4. IOC 容器中 Bean 的生命周期
+5. 从 IOC 容器中获取 Bean
 
 	调用 ApplicationContext 的 getBean() 方法
 
@@ -84,6 +73,7 @@ Spring 是一个开源框架.<br>
 	(4) 按类型匹配入参<br>
 
 3. **工厂方法注入**（很少使用，不推荐）
+
 4. **注入属性值细节**
 
 	(1) 字面值<br>
