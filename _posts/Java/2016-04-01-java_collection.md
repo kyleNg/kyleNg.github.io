@@ -74,10 +74,10 @@ List的列表迭代器：<br>
 
 **1.ArrayList**
 
-ArrayList就是一个可变长的数组结构。初始化数组长度为10<br>
-ArrayList实现了List接口的所有方法。（好像说了很多又好像是什么都没说）<br>
+ArrayList就是一个可变长的数组结构(动态数组)。初始化数组长度为10<br>
 ArrayList允许所有元素，包括null。<br>
-ArrayList是非同步的（unsynchronized）。
+ArrayList是非同步的（unsynchronized）。<br>
+ArrayList擅长随机访问。
 
 **2.LinkedList**
 
@@ -128,9 +128,11 @@ TreeSet是SortedSet接口的实现类，TreeSet可以确保集合元素处于排
 
 Map与List、Set接口不同，它是由一系列键值对组成的集合，提供了key到Value的映射。同时它也没有继承Collection。在Map中它保证了key与value之间的一一对应关系。也就是说一个key对应一个value，所以它不能存在相同的key值，当然value值可以相同。实现map的有：HashMap、TreeMap、HashTable、Properties、EnumMap。
 
-**1.Hashtable类**
+**1.HashMap类**
+以哈希表数据结构实现，查找对象时通过哈希函数计算其位置，它是为快速查询而设计的，其内部定义了一个hash表数组（Entry[] table），元素会通过哈希转换函数将元素的哈希地址转换成数组中存放的索引，如果有冲突，则使用散列链表的形式将所有相同哈希地址的元素串起来，可能通过查看HashMap.Entry的源码它是一个单链表结构。
 
-**2.HashMap类**
+**2.Hashtable类**
+也是以哈希表数据结构实现的，解决冲突时与HashMap也一样也是采用了散列链表的形式，不过性能比HashMap要低
 
 **3.TreeMap类**
 TreeMap就是一个红黑树数据结构，每个key-value对即作为红黑树的一个节点。TreeMap存储key-value对(节点)时，需要根据key对节点进行排序。TreeMap可以保证所有的
