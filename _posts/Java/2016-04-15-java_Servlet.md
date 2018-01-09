@@ -1,6 +1,6 @@
 ---
 layout: servlet
-category:  servlet
+category:  java
 title: JavaWeb--Servlet
 tags: servlet
 ---
