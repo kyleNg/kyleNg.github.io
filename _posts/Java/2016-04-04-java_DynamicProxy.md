@@ -1,7 +1,7 @@
 ---
 layout: post
 category:  java
-title: 动态代理
+title: Java--动态代理
 tags: java，动态代理
 ---
 ## 动态代理概述

@@ -2,7 +2,7 @@
 layout: post
 category: 
 - java
-title: Java多线程&并发-Queue
+title: Java多线程&并发--Queue
 tags: java，Thread
 ---
 ## Java中并发Queue种类

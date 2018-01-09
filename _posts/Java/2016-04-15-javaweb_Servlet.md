@@ -1,5 +1,5 @@
 ---
-layout: servlet
+layout: post
 category:  java
 title: JavaWeb--Servlet
 tags: servlet

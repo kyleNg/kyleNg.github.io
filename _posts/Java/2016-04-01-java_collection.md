@@ -2,10 +2,10 @@
 layout: post
 category: 
 - java
-title: Java集合
+title: Java--集合
 tags: java
 ---
-## 前言
+### 前言
 Java集合是java提供的工具包，包含了常用的数据结构：集合、链表、队列、栈、数组、映射等。Java集合工具包位置是java.util.*<br>
 Java集合主要可以划分为4个部分：List(列表)、Set(集合)、Map(映射,键值对)、工具类(Iterator迭代器、Enumeration枚举类、Arrays和Collections)。<br><br>
 Java集合框架的基本接口/类层次结构:<br>

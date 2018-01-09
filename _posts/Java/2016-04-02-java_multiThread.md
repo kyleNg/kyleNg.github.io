@@ -1,7 +1,7 @@
 ---
 layout: post
 category:  java
-title: Java多线程&并发-基础
+title: Java多线程&并发--基础
 tags: java，Thread
 ---
 ## Java实现多线程概述
