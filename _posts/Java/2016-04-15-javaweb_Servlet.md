@@ -4,9 +4,8 @@ category:  java
 title: JavaWeb--Servlet
 tags: servlet
 ---
-### Servlet是什么 ###
+### **Servlet是什么** ###
 ----------
-
 > Servlet（Server Applet）是用Java编写的服务器端程序。其主要功能在于交互式地浏览和修改数据，生成动态Web内容。狭义的Servlet是指Java语言实现的一个接口，广义的Servlet是指任何实现了这个Servlet接口的类，一般情况下，人们将Servlet理解为后者。
 
 以上摘自维基百科，通俗的说，Servlet是一个java接口，适用于B/S架构中的请求处理。
@@ -88,7 +87,7 @@ tags: servlet
 
 	1. 在浏览器中输入http://localhost:8080/ServletStudy/hello
 
-		控制态输出：
+		控制台输出：
 
 			HelloServlet constructor
 			init
@@ -145,4 +144,4 @@ tags: servlet
 
 ### Servlet的单实例多线程 ###
 ----------
-从上面可以得知一个servlet是在第一次被访问时加载到内存并实例化的。同样的业务请求共享一个servlet实例。不同的业务请求一般对应不同的servlet。
+从上面可以得知一个servlet是在第一次被访问时加载到内存并实例化的。同样的业务请求共享一个servlet实例。不同的业务请求一般对应不同的servlet。<br>
