@@ -22,7 +22,7 @@ tags: Linux
 可以发现 ssh目录下的两枚钥匙
 
 ## 3.将公钥复制到被管理机器
-将公钥发给要面密码登陆的目标机
+将公钥发给要免密码登陆的目标机
 
 	[root@Server .ssh]# scp id_rsa.pub root@Server_target:/root
 
