@@ -3,6 +3,8 @@ layout: post
 category:  Linear Algebra
 title: 线性代数（LinearAlgebra）
 tags: Linear Algebra
+mathjax: true
+mathjax_autoNumber: true
 ---
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
@@ -13,8 +15,7 @@ tags: Linear Algebra
 - vector就是一组数字，有两种，一种是row vector，一种是column vector。一般而言，我们没有特殊声明，说一个vector就是一个column vector。
 
 $$ row \quad vector:\begin{vmatrix}{a_{1}}&{a_{2}}&{\cdots}&{a_{n}}\end{vmatrix}$$
-
-$$ column \quad vector:\begin{vmatrix}{a_{1}}\\{a_{2}}\\{\vdots}\\{a_{n}}\end{vmatrix}$$
+$$ column \quad vector:\begin{vmatrix}{a_{1}}\\\\{a_{2}}\\\\{\vdots}\\\\{a_{n}}\end{vmatrix}$$
 
 ## 2, 向量空间（Spaces of Vectors）
 
@@ -22,29 +23,29 @@ $$ column \quad vector:\begin{vmatrix}{a_{1}}\\{a_{2}}\\{\vdots}\\{a_{n}}\end{vm
 
 - 二维向量空间
 
-    \( R^2 \) = All 2 dimensional real vectors.
-    $$v=\begin{vmatrix}{x_{1}}\\{x_{2}}\end{vmatrix}$$
+    \\( R^2 \\) = All 2 dimensional real vectors.
+    $$v=\begin{vmatrix}{x_{1}}\\\\{x_{2}}\end{vmatrix}$$
     $$ (x_1 , x_2\in R) $$
 
-    由上面的公式不难理解\( R^2 \)就是整个二维平面，那么就不难理解\( R^3 \)就包含了整个三维空间的所有向量。
+    由上面的公式不难理解\\( R^2 \\)就是整个二维平面，那么就不难理解\\( R^3 \\)就包含了整个三维空间的所有向量。
 
-    \( R^n \) = all column vectors with n real components.
+    \\( R^n \\) = all column vectors with n real components.
 
 ## 3, 向量的性质（Properties of Vector）
 
-1. 对于人与向量 **u**, **v** 和 **w** 都属于 \( R^n \), 任意标量 a
+1. 对于人与向量 **u**, **v** 和 **w** 都属于 \\( R^n \\), 任意标量 a
 和 b 则有以下性质(u’ is the additive inverse of u)
 
     - 交换性 (commutativity)：
-        + \( u + v = v + u \)
+        + \\( u + v = v + u \\)
     - 结合性 (associativity)：
-        + \( (u + v) + w = u + (v + w) \)
+        + \\( (u + v) + w = u + (v + w) \\)
     - 加法单位元 (additive identity)：
-        + \( 𝟎 + u = u \)
+        + \\( 𝟎 + u = u \\)
     - 加法逆元素 (additive inverse)：
-        + \( u’ + u = 0 \)
+        + \\( u’ + u = 0 \\)
     - 乘法单位元 (multiplicative identity)：
-     + \( 1u = u \)
+     + \\( 1u = u \\)
     - 分配性 (distributivity)：
         + \\( a(u+v) = au + av \\)
         + \\( (ab)u = a(bu) \\)
