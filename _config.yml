@@ -44,3 +44,5 @@ social:
     github: kyleNg
     twitter: Kyle_Ng
     mail: Kyle_Ng
+mathjax: true
+mathjax_autoNumber: true
