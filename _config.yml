@@ -27,8 +27,7 @@ nav:
     - {title: 分类,        in_site: true,  description: 标签分类,       url: '/categories'}
     - {title: 关于,        in_site: true,  description: 关于作者,       url: '/about_me'}
 
-mathjax: true
-mathjax_autoNumber: true
+
 
 gems:
     - jekyll-paginate
